@@ -1,4 +1,4 @@
-# FullstackOpenarl
+# FullstackOpen
 
 From [part0][01] :
 
