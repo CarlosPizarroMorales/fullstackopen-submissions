@@ -141,4 +141,34 @@ const App = () => {
 
 ## Exercise 1.4
 
+Place the objects into an array and refactor the code.
+```jsx
+const App = () => {
+  const course = 'Half Stack application development'
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
+```
+
+- **NOTE 1:** it works the same as my previous solution, but the syntax is cleaner since I don't need to pass `<Total parts="{[part1, part2, part3]}"/>` anymore, so no refactor was needed. Yay💚!
+- **NOTE 2:** iterables are the 🐐!
+
 ## Exercise 1.5
