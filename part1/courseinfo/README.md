@@ -172,3 +172,43 @@ const App = () => {
 - **NOTE 2:** iterables are the 🐐!
 
 ## Exercise 1.5
+
+Another change to data, one-single object. Refactor as needed.
+```jsx
+const App = () => {
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
+```
+
+**NOTE 1**: Extracting the data was the only refactor needed:
+```jsx
+<main>
+  <Header title={ course.name }/>
+  <Content content={ course.parts }/>
+  <Total total={ course.parts }/>
+</main>
+```
+**NOTE 2**: Beautiful 😄.  
+**NOTE 3**: REMEMBER 🧠 you cannot pass `Object`s as children but iterables (arrays at least) you can.

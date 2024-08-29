@@ -23,21 +23,23 @@ const Content = ({ content }) => {
 
 const App = () => {
 
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   return (
       // here I'm passing an object named "content" to <Content/> component.
@@ -45,9 +47,9 @@ const App = () => {
       // "content" as property. If you want to avoid typing props.content.part1...
       // you must use object destructuring in the component parameter ({ content })
     <main>
-      <Header title={ course }/>
-      <Content content={ parts }/>
-      <Total total={ parts }/>
+      <Header title={ course.name }/>
+      <Content content={ course.parts }/>
+      <Total total={ course.parts }/>
     </main>
   )
 }
