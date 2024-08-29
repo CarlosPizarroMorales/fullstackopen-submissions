@@ -211,4 +211,5 @@ const App = () => {
 </main>
 ```
 **NOTE 2**: Beautiful 😄.  
-**NOTE 3**: REMEMBER 🧠 you cannot pass `Object`s as children but iterables (arrays at least) you can.
+**NOTE 3**: REMEMBER 🧠 you cannot pass `Object`s as children but iterables (arrays at least) you can.  
+**NOTE 4**: Learn JSX.
