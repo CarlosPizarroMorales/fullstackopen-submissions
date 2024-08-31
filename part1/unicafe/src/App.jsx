@@ -4,6 +4,23 @@ import './App.css'
 const Button = ({ handleClick, text }) => 
   <button onClick={ handleClick }>{ text }</button>
 
+const Statistics = ({ good, bad, neutral }) => {
+  return (
+    <>
+      <div className="statistics">
+        <p> 😀 { good }</p>
+        <p> 😐 { neutral }</p>
+        <p> 😠 { bad }</p>
+      </div>
+      <div className="left">
+        <p> All: { good + neutral + bad }</p>
+        <p> Avg: { ((good * 1 + neutral * 0 + bad * -1) / ( good + neutral + bad || 1 )).toFixed(2) }</p>
+        <p> Positive: { (good / ( good + bad + neutral || 1 ) * 100).toFixed(2) }%</p>
+      </div>
+    </>
+  )
+}
+
 function App() {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -35,16 +52,7 @@ function App() {
         <Button handleClick={ handleBadClick } text="😠" title="The experience wasn't good."/>
       </div>
       <h1>Statistics</h1>
-      <div className="statistics">
-        <p> 😀 { good }</p>
-        <p> 😐 { neutral }</p>
-        <p> 😠 { bad }</p>
-      </div>
-      <div className="left">
-        <p> All: { good + neutral + bad }</p>
-        <p> Avg: { ((good * 1 + neutral * 0 + bad * -1) / ( good+neutral+bad || 1 )).toFixed(2) }</p>
-        <p> Positive: { (good / ( good+bad+neutral || 1 ) * 100).toFixed(2) }%</p>
-      </div>
+      <Statistics good={ good } bad={ bad } neutral={ neutral }/>
     </>
   )
 }

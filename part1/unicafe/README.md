@@ -2,6 +2,7 @@
   - [STEP 1](#step-1)
   - [STEP 2](#step-2)
   - [STEP 3](#step-3)
+  - [STEP 4](#step-4)
 
 # [Exercise UNICAFE][00]
 
@@ -75,6 +76,10 @@ const App = () => {
   )
 }
 ```
+
+## STEP 4
+
+
 
 [00]:https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14
 [01]:https://www.unicafe.fi/
