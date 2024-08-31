@@ -43,6 +43,11 @@ h1 {
   gap: 1rem;
 }
 
+#root .left p {
+  text-align: left;
+  margin: 0;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

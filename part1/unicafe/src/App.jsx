@@ -25,7 +25,6 @@ function App() {
     setBad(updated);
   }
 
-
   return (
     <>
       <img className="logo" src="https://evermade-unicafe-fi.s3.eu-north-1.amazonaws.com/wp-content/uploads/2023/01/16120326/Etusivun_nosto_1024px.jpg"/>
@@ -40,6 +39,11 @@ function App() {
         <p> 😀 { good }</p>
         <p> 😐 { neutral }</p>
         <p> 😠 { bad }</p>
+      </div>
+      <div className="left">
+        <p> All: { good + neutral + bad }</p>
+        <p> Avg: { ((good * 1 + neutral * 0 + bad * -1) / ( good+neutral+bad || 1 )).toFixed(2) }</p>
+        <p> Positive: { (good / ( good+bad+neutral || 1 ) * 100).toFixed(2) }%</p>
       </div>
     </>
   )
