@@ -3,6 +3,7 @@
 - [Exercise "ANECDOTES"](#exercise-anecdotes)
   - [STEP 1](#step-1)
   - [STEP 2](#step-2)
+  - [STEP 3](#step-3)
 
 
 ## STEP 1
@@ -68,6 +69,14 @@ copy[2] += 1
 ``` 
 
 Using an array might be the simpler choice in this case. Searching the Internet will provide you with lots of hints on how to create a zero-filled array of the desired length.
+
+## STEP 3
+
+Now implement the final version of the application that displays the anecdote with the largest number of votes:
+
+![image](./src/assets/view-1.14.png)
+
+If multiple anecdotes are tied for first place it is sufficient to just show one of them.
 
 ---
 [00]:https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14

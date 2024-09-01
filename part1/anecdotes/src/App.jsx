@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import './App.css'
 
+const MostVoted = ({ max, anecdotes }) => 
+  max != 0 ? <p>{ anecdotes[max] }</p> 
+           : <p style={{fontStyle:'italic'}}>Waiting for your likes...</p>;
+
+
 function App() {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -27,6 +32,8 @@ function App() {
     const newAnecdote = Math.floor(Math.random() * anecdotes.length);
     setSelected(newAnecdote);
   }
+
+  const max = [votes.indexOf(Math.max(...votes))];
   
   return (
     <>
@@ -35,6 +42,8 @@ function App() {
       </main>
       <button onClick={ getNewAnecdote }>One more...</button>
       <button onClick={ vote }>💚 { votes[selected] }</button>
+      <p>___ Most voted ___</p>
+      <MostVoted max={ max } anecdotes={ anecdotes }/>
     </>
   )
 }
