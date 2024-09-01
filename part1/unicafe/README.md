@@ -4,6 +4,7 @@
   - [STEP 3](#step-3)
   - [STEP 4](#step-4)
 - [STEP 5](#step-5)
+  - [STEP 6](#step-6)
 
 # [Exercise UNICAFE][00]
 
@@ -101,6 +102,9 @@ const Statistics = (props) => {
   )
 }
 ```
+
+## STEP 6
+Put the whole statistics in a table.
 
 
 [00]:https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14

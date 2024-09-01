@@ -5,22 +5,23 @@ const Button = ({ handleClick, text }) =>
   <button onClick={ handleClick }>{ text }</button>;
 
 const StatisticsLine = ({ title, value, tail }) => 
-  <p> { title } { value }{tail}</p>;
+  <tr><td>{ title }</td><td>{ value }{tail}</td></tr>;
 
 const Statistics = ({ good, bad, neutral }) => {
   return (
     (good || bad || neutral) ?
     <>
-      <div className="statistics">
-        <StatisticsLine title="😀" value={ good }/>
-        <StatisticsLine title="😐" value={ neutral }/>
-        <StatisticsLine title="😠" value={ bad }/>
-      </div>
-      <div className="left">
-        <StatisticsLine title="All:" value={ good + neutral + bad } tail=" "/>
-        <StatisticsLine title="Avg:" value={ ((good * 1 + neutral * 0 + bad * -1) / ( good + neutral + bad || 1 )).toFixed(2) } tail=" "/>
-        <StatisticsLine title="Positive:" value={ (good / ( good + bad + neutral || 1 ) * 100).toFixed(2) } tail="%"/>
-      </div>
+      <table>
+        <thead><tr><th>Category</th><th>Value</th></tr></thead>
+        <tbody>
+          <StatisticsLine title="😀" value={ good }/>
+          <StatisticsLine title="😐" value={ neutral }/>
+          <StatisticsLine title="😠" value={ bad }/>
+          <StatisticsLine title="All:" value={ good + neutral + bad } tail=" "/>
+          <StatisticsLine title="Avg:" value={ ((good * 1 + neutral * 0 + bad * -1) / ( good + neutral + bad || 1 )).toFixed(2) } tail=" "/>
+          <StatisticsLine title="Positive:" value={ (good / ( good + bad + neutral || 1 ) * 100).toFixed(2) } tail="%"/>
+        </tbody>
+      </table>
     </>
    : <p>Waiting for feedback...</p>
   )
