@@ -6,6 +6,7 @@ const Button = ({ handleClick, text }) =>
 
 const Statistics = ({ good, bad, neutral }) => {
   return (
+    (good || bad || neutral) ?
     <>
       <div className="statistics">
         <p> 😀 { good }</p>
@@ -18,6 +19,7 @@ const Statistics = ({ good, bad, neutral }) => {
         <p> Positive: { (good / ( good + bad + neutral || 1 ) * 100).toFixed(2) }%</p>
       </div>
     </>
+   : <p>Waiting for feedback...</p>
   )
 }
 

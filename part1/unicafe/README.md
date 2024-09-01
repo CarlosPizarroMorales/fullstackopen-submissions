@@ -3,6 +3,7 @@
   - [STEP 2](#step-2)
   - [STEP 3](#step-3)
   - [STEP 4](#step-4)
+- [STEP 5](#step-5)
 
 # [Exercise UNICAFE][00]
 
@@ -78,6 +79,9 @@ const App = () => {
 ```
 
 ## STEP 4
+Change your application to display statistics only once feedback has been gathered.
+
+# STEP 5
 
 
 
