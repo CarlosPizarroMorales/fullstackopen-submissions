@@ -14,6 +14,15 @@ function App() {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0));
+  // debugger;
+
+  const vote = () => {
+    const [...tempVotes] = votes;
+    tempVotes[selected]++;
+    setVotes(tempVotes);
+  }
+
   const getNewAnecdote = () => {
     const newAnecdote = Math.floor(Math.random() * anecdotes.length);
     setSelected(newAnecdote);
@@ -25,9 +34,9 @@ function App() {
         {anecdotes[selected]}
       </main>
       <button onClick={ getNewAnecdote }>One more...</button>
+      <button onClick={ vote }>💚 { votes[selected] }</button>
     </>
   )
 }
 
-
-export default App
+export default App;
