@@ -82,7 +82,25 @@ const App = () => {
 Change your application to display statistics only once feedback has been gathered.
 
 # STEP 5
+Let's continue refactoring the application. Extract the following two components:
 
+`Button` handles the functionality of each feedback submission button.
+`StatisticLine` for displaying a single statistic, e.g. the average score.
+To be clear: the StatisticLine component always displays a single statistic, meaning that the application uses multiple components for rendering all of the statistics:
+
+```jsx
+const Statistics = (props) => {
+  /// ...
+  return(
+    <div>
+      <StatisticLine text="good" value ={...} />
+      <StatisticLine text="neutral" value ={...} />
+      <StatisticLine text="bad" value ={...} />
+      // ...
+    </div>
+  )
+}
+```
 
 
 [00]:https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14

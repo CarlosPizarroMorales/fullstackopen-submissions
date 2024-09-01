@@ -2,21 +2,24 @@ import { useState } from 'react'
 import './App.css'
 
 const Button = ({ handleClick, text }) => 
-  <button onClick={ handleClick }>{ text }</button>
+  <button onClick={ handleClick }>{ text }</button>;
+
+const StatisticsLine = ({ title, value, tail }) => 
+  <p> { title } { value }{tail}</p>;
 
 const Statistics = ({ good, bad, neutral }) => {
   return (
     (good || bad || neutral) ?
     <>
       <div className="statistics">
-        <p> 😀 { good }</p>
-        <p> 😐 { neutral }</p>
-        <p> 😠 { bad }</p>
+        <StatisticsLine title="😀" value={ good }/>
+        <StatisticsLine title="😐" value={ neutral }/>
+        <StatisticsLine title="😠" value={ bad }/>
       </div>
       <div className="left">
-        <p> All: { good + neutral + bad }</p>
-        <p> Avg: { ((good * 1 + neutral * 0 + bad * -1) / ( good + neutral + bad || 1 )).toFixed(2) }</p>
-        <p> Positive: { (good / ( good + bad + neutral || 1 ) * 100).toFixed(2) }%</p>
+        <StatisticsLine title="All:" value={ good + neutral + bad } tail=" "/>
+        <StatisticsLine title="Avg:" value={ ((good * 1 + neutral * 0 + bad * -1) / ( good + neutral + bad || 1 )).toFixed(2) } tail=" "/>
+        <StatisticsLine title="Positive:" value={ (good / ( good + bad + neutral || 1 ) * 100).toFixed(2) } tail="%"/>
       </div>
     </>
    : <p>Waiting for feedback...</p>
