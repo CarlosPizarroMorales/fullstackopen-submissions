@@ -17,6 +17,8 @@ part2
   courseinfo
   phonebook
   countries
+part3
+  ...
 ```
 > So, each part has its own directory, which contains a directory for each exercise set (like the unicafe exercises in part 1).
 
