@@ -25,3 +25,6 @@ App
 
 ## Exercise 2.4 - step 9
 - Let's extend our application to allow for an arbitrary number of courses
+
+## Exercise 2.5 - step 10
+- Declare the Course component as a separate module, which is imported by the App component. You can include all subcomponents of the course in the same module.
