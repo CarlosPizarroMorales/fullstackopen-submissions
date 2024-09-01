@@ -15,3 +15,7 @@ App
 ```
 - The total sum of exercises is not needed yet.
 - The app should work regardless of the number of parts a course has, so make sure to use iterable methods.
+
+## Exercise 2.2 step 7
+- Show also the sum of the exercises of the course.
+![image](./src/assets/view-2.2.png)
