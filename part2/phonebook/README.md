@@ -56,3 +56,10 @@ Implement a search field that can be used to filter the list of people by name.
 You can implement the search field as an input element that is placed outside the HTML form. The filtering logic shown in the image is case insensitive, meaning that the search term arto also returns results that contain Arto with an uppercase A.
 
 Hardcode dummy data into your app to test this feature.
+
+## Exercise 2.10 - The Phonebook Step 5
+If you have implemented your application in a single component, refactor it by extracting suitable parts into new components. Maintain the application's state and all event handlers in the App root component.
+
+It is sufficient to extract three components from the application. Good candidates for separate components are, for example, the search filter, the form for adding new people to the phonebook, a component that renders all people from the phonebook, and a component that renders a single person's details.
+
+The App.jsx should render only titles and let the rest of the components handle the rendering. 
