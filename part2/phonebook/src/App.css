@@ -45,3 +45,30 @@ button[type="submit"] {
 label {
   margin-bottom: 1rem;
 }
+
+table {
+  text-align: left;
+}
+
+td {
+  padding: .5rem 2rem;
+}
+
+th {
+  text-align: center;
+}
+
+thead > tr > th{
+  border-bottom: 1px solid white;
+}
+
+#root {
+  position: relative;
+}
+
+label#search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: .85rem;
+}

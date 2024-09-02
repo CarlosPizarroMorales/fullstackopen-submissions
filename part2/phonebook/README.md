@@ -49,3 +49,10 @@ Issue a warning with the `alert` command when such an action is attempted.
 
 ## Exercise 2.8 - The Phonebook Step 3
 Expand your application by allowing users to add phone numbers to the phone book. You will need to add a second input element to the form (along with its own event handler)
+
+## Exercise 2.9 - The Phonebook Step 4
+Implement a search field that can be used to filter the list of people by name.
+
+You can implement the search field as an input element that is placed outside the HTML form. The filtering logic shown in the image is case insensitive, meaning that the search term arto also returns results that contain Arto with an uppercase A.
+
+Hardcode dummy data into your app to test this feature.

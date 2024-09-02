@@ -1,5 +1,5 @@
 const Person = ({ person }) => 
-<p>🤠 { person.name } 📞 { person.number }</p>;
+<tr><td>🤠 { person.name }</td><td>📞 { person.number }</td></tr>;
 
 
 export default Person;
