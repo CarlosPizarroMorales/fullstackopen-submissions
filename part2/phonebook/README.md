@@ -63,3 +63,22 @@ If you have implemented your application in a single component, refactor it by e
 It is sufficient to extract three components from the application. Good candidates for separate components are, for example, the search filter, the form for adding new people to the phonebook, a component that renders all people from the phonebook, and a component that renders a single person's details.
 
 The App.jsx should render only titles and let the rest of the components handle the rendering. 
+
+## Exercise 2.11 - The Phonebook Step 6
+Store the initial state of the application in a `/db.json` file and start a json-server on port 3001, making sure the server returns the list of people in the file.
+
+Then, refactor the App so the initial state is fetched with axios inside an effect hook.
+
+### Dependencies stage
+1. ✅ create `/db.json` file
+2. ✅ install json-server --save-dev
+3. ✅ add a script "server": "json-server --port 3001 --watch db.json"
+4. ✅ install axios
+5. ✅ `npm run server`
+6. ✅ browser http://localhost:3001/persons, verify the data is being served.
+
+### Refactor stage
+1. ✅ import axios
+2. ✅ add useEffect to react imports
+3. ✅ declare useEffect hook: `useEffect(hook, [])`
+4. ✅ inside hook, fetch url and set state.
