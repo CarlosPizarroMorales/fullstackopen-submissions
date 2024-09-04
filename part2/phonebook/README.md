@@ -97,14 +97,39 @@ Extract the code that handles the communication with the backend into its own mo
 2. ✅move the axios logic into this file. `getAll` and `create` so far.
 3. ✅refactor `useEffect` and `addNewPerson` in `App.jsx`
 
-## Exercise 2.14 - The Phonebook Step 9
+## ✅Exercise 2.14 - The Phonebook Step 9
 Make it possible for users to delete entries from the phonebook. The deletion can be done through a dedicated button for each person in the phonebook list. You can confirm the action from the user by using the window.confirm method. The associated resource for a person in the backend can be deleted by making an HTTP DELETE request to the resource's URL. If we are deleting e.g. a person who has the id 2, we would have to make an HTTP DELETE request to the URL localhost:3001/persons/2. No data is sent with the request.
 
 You can make an HTTP DELETE request with the axios library in the same way that we make all of the other requests.
 
 Don't use `delete` as method name because is JS reserved word.
 
+1. ✅ Declare a state related method `deletePerson` that removes a resource from server based on its id.
+2. ✅ Pass `deletePerson` as props across the import chain up to `Person`.
+3. ✅ In `Person` create a delete button for user interaction.
+4. ✅ Attach `deletePerson` as callback handler for onClick: `onClick={ () => deletePerson(person.id) }`
+5. ✅ Implement a remove method on `src/services/persons.js` on `axios.delete` request.
+6. 👁️ `DELETE` requests doesn't carry payload. `DELETE url/:id` is the proper form.
+7. ✅ Implement the declared `App.jsx:deletePerson`  method:
+   1.✅ First, the method must get the user confirmation.
+   2.✅ If confirmed, call the `remove` service and `setPerson` after fulfilled.
+   3.✅ If not, just return.
+
 ## Exercise 2.15 - The Phonebook Step 10
 Change the functionality so that if a number is added to an already existing user, the new number will replace the old number. It's recommended to use the HTTP PUT method for updating the phone number.
 
 If the person's information is already in the phonebook, the application can ask the user to confirm the action.
+
+1. ✅ Create a util f(x) `checkExists` to validate scenarios
+   1. ✅ Number exists, name don't? `alert( number already registered)`
+   2. ✅ Number exists and belongs to Name? `alert('Are U trolling me?')`
+   3. ✅ Name exists, Number don't: patch `person` with `newNumber`
+   4. ✅ Name doesn't exists, number doesn't exists: create new Person
+2. ✅ Refactor the `addNewPerson` method in `App.jsx`:
+   1. ✅ run `checkExists`
+   2. ✅ case 1 and 2 alert, resetForm and return.
+   3. ✅ case 0 create newPerson by calling `service::create(newPerson)`
+   4. case 3 patch the person.
+3. Patch the person:
+   1. user confirm number patching?  => `axios.put(${BASE_URL}/${id}, newPerson);`
+   2. no patching? => return;
