@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import personService from './services/persons';
 import Persons from './components/Persons';
 import Search from './components/Search';
 import Form from './components/Form'
@@ -13,12 +13,13 @@ const App = () => {
 
   useEffect(()=> {
     console.log('from effect');
-    axios
-      .get('http://localhost:3001/persons')
-      .then(r => {
-        console.log(r.data);
-        setPersons(r.data);
-      })
+    
+    personService.getAll()
+    .then(persons => {
+      console.log(persons);
+      setPersons(persons);
+    })
+
   },[])
 
   console.log('render', persons.length, ' persons.');     // checking rendering
@@ -42,21 +43,18 @@ const App = () => {
 
     const newPerson = { name: newName.trim(), number: newNumber.trim() }
 
-    axios
-      .post('http://localhost:3001/persons', newPerson)
-      .then(response => response.data)
-      .then(returnedPerson => {
-        console.log(returnedPerson);
-        setPersons(persons.concat(returnedPerson));
-        setNewName('');
-        setNewNumber('');
-      })
+    personService.create(newPerson)
+    .then(returnedPerson => {
+      console.log(returnedPerson);
+      setPersons(persons.concat(returnedPerson));
+      setNewName('');
+      setNewNumber('');
+    }) 
   }
 
   const handlePersonChange = (e) => setNewName(e.target.value);
   const handleNumberChange = (e) => setNewNumber(e.target.value);
   const handleSearchChange = (e) => setNewSearch(e.target.value.toLowerCase());
-  // const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(newSearch));
   const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(newSearch));
 
   return (

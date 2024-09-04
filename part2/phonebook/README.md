@@ -70,28 +70,32 @@ Store the initial state of the application in a `/db.json` file and start a json
 Then, refactor the App so the initial state is fetched with axios inside an effect hook.
 
 ### Dependencies stage
-1. ✅ create `/db.json` file
-2. ✅ install json-server --save-dev
-3. ✅ add a script "server": "json-server --port 3001 --watch db.json"
-4. ✅ install axios
-5. ✅ `npm run server`
-6. ✅ browser http://localhost:3001/persons, verify the data is being served.
+1. ✅create `/db.json` file
+2. ✅install json-server --save-dev
+3. ✅add a script "server": "json-server --port 3001 --watch db.json"
+4. ✅install axios
+5. ✅`npm run server`
+6. ✅browser http://localhost:3001/persons, verify the data is being served.
 
 ### Refactor stage
-1. ✅ import axios
-2. ✅ add useEffect to react imports
-3. ✅ declare useEffect hook: `useEffect(hook, [])`
-4. ✅ inside hook, fetch url and set state.
+1. ✅import axios
+2. ✅add useEffect to react imports
+3. ✅declare useEffect hook: `useEffect(hook, [])`
+4. ✅inside hook, fetch url and set state.
 
 ## ✅Exercise 2.12 - The Phonebook Step 7
 Currently, the numbers that are added to the phonebook are not saved to a backend server. Fix this situation.
 
-1. ✅ Create an axios.post request in `addNewPerson()`
-2. ✅ `setPersons(persons.concat(returnedPerson));` to set persons with the returned object. 
-3. 👁️ Don't concat the user-input object since the request could `reject` and no re-rendering should be made.
+1. ✅Create an axios.post request in `addNewPerson()`
+2. ✅`setPersons(persons.concat(returnedPerson));` to set persons with the returned object. 
+3. 👁️Don't concat the user-input object since the request could `reject` and no re-rendering should be made.
 
-## Exercise 2.13 - The Phonebook Step 8
+## ✅Exercise 2.13 - The Phonebook Step 8
 Extract the code that handles the communication with the backend into its own module by following the example shown earlier in this part of the course material.
+
+1. ✅create `/src/services/persons.js`
+2. ✅move the axios logic into this file. `getAll` and `create` so far.
+3. ✅refactor `useEffect` and `addNewPerson` in `App.jsx`
 
 ## Exercise 2.14 - The Phonebook Step 9
 Make it possible for users to delete entries from the phonebook. The deletion can be done through a dedicated button for each person in the phonebook list. You can confirm the action from the user by using the window.confirm method. The associated resource for a person in the backend can be deleted by making an HTTP DELETE request to the resource's URL. If we are deleting e.g. a person who has the id 2, we would have to make an HTTP DELETE request to the URL localhost:3001/persons/2. No data is sent with the request.
