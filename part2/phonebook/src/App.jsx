@@ -37,6 +37,8 @@ const App = () => {
     }
   }
 
+  const payload = () => ({ name: newName.trim(), number: newNumber.trim() });
+
   const addNewPerson = (e) => {
     e.preventDefault();
     
@@ -53,9 +55,8 @@ const App = () => {
     }
 
     if ( checked === 0) { 
-      const newPerson = { name: newName.trim(), number: newNumber.trim() }
       
-      personService.create(newPerson)
+      personService.create(payload())
       .then(returnedPerson => {
         // console.log(returnedPerson);
         setPersons(persons.concat(returnedPerson));
@@ -63,7 +64,21 @@ const App = () => {
       }) 
       return;
     }
+
     // implement number patchinig axios.put
+    if ( checked === 3) {
+      const [ who ] = persons.filter(p => p.name === newName);
+      const { id } = who;
+
+      if (confirm(`Would you like to update the number for ${who.name}?`)) {
+        personService.update(id, payload())
+        .then(returnedPerson => {
+          setPersons(persons.map(p => p.id !== id ? p : returnedPerson));
+          resetForm();
+        })
+      }
+      return;
+    }
   }
 
   const deletePerson = id => {
