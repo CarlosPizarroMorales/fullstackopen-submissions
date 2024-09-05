@@ -111,9 +111,9 @@ Don't use `delete` as method name because is JS reserved word.
 5. ✅ Implement a remove method on `src/services/persons.js` on `axios.delete` request.
 6. 👁️ `DELETE` requests doesn't carry payload. `DELETE url/:id` is the proper form.
 7. ✅ Implement the declared `App.jsx:deletePerson`  method:
-   1.✅ First, the method must get the user confirmation.
-   2.✅ If confirmed, call the `remove` service and `setPerson` after fulfilled.
-   3.✅ If not, just return.
+   1. First, the method must get the user confirmation.
+   2. If confirmed, call the `remove` service and `setPerson` after fulfilled.
+   3. If not, just return.
 
 ## Exercise 2.15 - The Phonebook Step 10
 Change the functionality so that if a number is added to an already existing user, the new number will replace the old number. It's recommended to use the HTTP PUT method for updating the phone number.
@@ -121,15 +121,34 @@ Change the functionality so that if a number is added to an already existing use
 If the person's information is already in the phonebook, the application can ask the user to confirm the action.
 
 1. ✅ Create a util f(x) `checkExists` to validate scenarios
-   1. ✅ Number exists, name don't? `alert( number already registered)`
-   2. ✅ Number exists and belongs to Name? `alert('Are U trolling me?')`
-   3. ✅ Name exists, Number don't: patch `person` with `newNumber`
-   4. ✅ Name doesn't exists, number doesn't exists: create new Person
+   1. Number exists, name don't? `alert( number already registered)`
+   2. Number exists and belongs to Name? `alert('Are U trolling me?')`
+   3. Name exists, Number don't: patch `person` with `newNumber`
+   4. Name doesn't exists, number doesn't exists: create new Person
 2. ✅ Refactor the `addNewPerson` method in `App.jsx`:
-   1. ✅ run `checkExists`
-   2. ✅ case 1 and 2 alert, resetForm and return.
-   3. ✅ case 0 create newPerson by calling `service::create(newPerson)`
+   1. run `checkExists`
+   2. case 1 and 2 alert, resetForm and return.
+   3. case 0 create newPerson by calling `service::create(newPerson)`
    4. case 3 patch the person.
-3. Patch the person:
+3. ✅ Patch the person:
    1. user confirm number patching?  => `axios.put(${BASE_URL}/${id}, newPerson);`
    2. no patching? => return;
+
+## Exercise 2.16 - The Phonebook Step 11
+Use the improved error message example from part 2 as a guide to show a notification that lasts for a few seconds after a successful operation is executed (a person is added or a number is changed)
+
+1. ✅ Create a `/src/components/Notification.jsx` component.
+   1. Pass the component two props: `type` and `message`
+   2. `type` handles the class style `error` and `info`
+   3. `message` carries the message controlling the spawn through its value 'null'.
+1. ✅ Import the component in App.jsx
+3. ✅ Create a piece of state `[ message, setMessage ] = useState(null)`
+4. ✅ Create a piece of state `[ type, setType ] = useState(null)`
+5. ✅ Use the component in the template. For testing purposes, set an initial message state different from null.
+6. ✅ Create the styles. One rule common for `.message` and two more for `.info` and `.error`
+7. ✅ Check the proper rendering of the message.
+1. ✅ Implement the logic for rendering a sucess message on person added or number updated:
+   1. Set `message` to the proper message text
+   2. Set `type` to `info`
+   3. Implement a setTimeout that make the message lasts for 4 seconds.
+   4. `setMessage(null)` to hide notification.

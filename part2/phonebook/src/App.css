@@ -72,3 +72,25 @@ label#search {
   left: 100%;
   font-size: .85rem;
 }
+
+.message {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  min-width: 400px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1.25rem;
+  padding: 1rem;
+  border: 2px solid white;
+}
+
+.info {
+  color: rgb(1, 20, 22);
+  background-color: rgb(30, 214, 235);
+}
+
+.error {
+  color: white;
+  background-color: crimson;
+}

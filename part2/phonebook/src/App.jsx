@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Notification from './components/Notification'
 import personService from './services/persons';
 import Persons from './components/Persons';
 import Search from './components/Search';
@@ -10,6 +11,8 @@ const App = () => {
   const [ newName, setNewName ] = useState('add a name...');
   const [ newNumber, setNewNumber ] = useState('add a number...');
   const [ newSearch, setNewSearch ] = useState('');
+  const [ message, setMessage ] = useState(null);
+  const [ msgType, setMsgType ] = useState(null);
 
   useEffect(()=> {
     // console.log('from effect');
@@ -59,8 +62,11 @@ const App = () => {
       personService.create(payload())
       .then(returnedPerson => {
         // console.log(returnedPerson);
-        setPersons(persons.concat(returnedPerson));
         resetForm();
+        setMsgType('info');
+        setMessage(`${returnedPerson.name} has been successfully added.`);
+        setTimeout(() => setMessage(null), 5000);
+        setPersons(persons.concat(returnedPerson));
       }) 
       return;
     }
@@ -73,8 +79,11 @@ const App = () => {
       if (confirm(`Would you like to update the number for ${who.name}?`)) {
         personService.update(id, payload())
         .then(returnedPerson => {
-          setPersons(persons.map(p => p.id !== id ? p : returnedPerson));
           resetForm();
+          setMsgType('info');
+          setMessage(`${returnedPerson.name}'s number has been updated.`);
+          setTimeout(() => setMessage(null), 5000);
+          setPersons(persons.map(p => p.id !== id ? p : returnedPerson));
         })
       }
       return;
@@ -104,6 +113,7 @@ const App = () => {
 
   return (
     <main>
+      <Notification type={ msgType } message={ message } />
       <h2>Phonebook</h2>
       <Search newSearch={ newSearch } handleSearchChange={ handleSearchChange }/>
       <Form 
