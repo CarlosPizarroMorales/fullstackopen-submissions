@@ -152,3 +152,11 @@ Use the improved error message example from part 2 as a guide to show a notifica
    2. Set `type` to `info`
    3. Implement a setTimeout that make the message lasts for 4 seconds.
    4. `setMessage(null)` to hide notification.
+
+
+## Exercise 2.17 - The Phonebook Step 12 (FINAL)
+If you delete a record in db.json and inmediately try to modify its importance in the browser view, you will get a 404 `Uncaught error` in the Console. Fix the issue, so the user get an error notification message.
+
+1. ✅ Implement the same snippet before in `App.jsx::addNewPerson() checked === 3`
+2. ✅ `setMsgType('error')` and `setMessage(proper message...)`
+3. ✅ resetForm, etc, etc..

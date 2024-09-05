@@ -83,7 +83,14 @@ const App = () => {
           setMsgType('info');
           setMessage(`${returnedPerson.name}'s number has been updated.`);
           setTimeout(() => setMessage(null), 5000);
-          setPersons(persons.map(p => p.id !== id ? p : returnedPerson));
+        })
+        .catch(error => {
+          resetForm();
+          console.log(error);
+          setMsgType('error');
+          setMessage(`${who.name} no longer exists on the server.`);
+          setTimeout(() => setMessage(null), 5000);
+          setPersons(persons.filter(p => p.id !== id));
         })
       }
       return;
