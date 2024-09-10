@@ -8,7 +8,7 @@ import './assets/App.css'
 function App() {
   // STATE
   const [ countries, setCountries ] = useState(null);
-  const [ newSearch, setNewSearch ] = useState(null);
+  const [ newSearch, setNewSearch ] = useState('');
   
   // USEEFFECT
   useEffect(() => {
@@ -21,15 +21,22 @@ function App() {
 
   // UTILITIES
   const handleNewSearch = e => setNewSearch(e.target.value.toLowerCase());
-  const filteredCountries = countries.filter(c => 
-    c.name.common.toLowerCase().includes(newSearch) ||
-    c.name.official.toLowerCase().includes(newSearch))
+  const filteredCountries = (() => {
+    
+    const search = newSearch.trim().toLowerCase();
+    if (search === "") return [];
+    
+    const exactMatch = countries.find(c => c.name.common.toLowerCase() === search);
+    if (exactMatch) return [exactMatch];
+
+    return countries.filter(c => c.name.common.toLowerCase().includes(search));
+  })();
 
   // RENDERING
   return (
     <>
       <Search newSearch={ newSearch } handleNewSearch={ handleNewSearch }/>
-      <Countries countries={ filteredCountries }/>
+      <Countries countries={ filteredCountries } setSearch={ setNewSearch }/>
     </>
   )
 }

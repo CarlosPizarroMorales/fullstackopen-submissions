@@ -9,11 +9,14 @@ const Country = ({ country }) =>
     <h1 className="">{ country.name.common }</h1>
     <p>{ `Capital: ${country.capital}` }</p>
     <p>{ `Area: ${country.area}` }</p>
-    <p>Languages:</p>
-    <ul>
-      { Object.values(country.languages).map((l, i) => <li key={ i }>{ l }</li>) }
-    </ul>
-    <img src={ country.flags.svg } alt={ country.flags.alt } style={{ style }}/>
+    <p>Languages: 
+      { Object.values(country.languages).map((l, i) => 
+      i === Object.values(country.languages).length - 1 
+        ? <span key={ i }> { l } </span>
+        : <span key={ i }> { l } - </span>
+      )}
+    </p>
+    <img src={ country.flags.svg } alt={ country.flags.alt } style={ style }/>
   </main>
 )
 

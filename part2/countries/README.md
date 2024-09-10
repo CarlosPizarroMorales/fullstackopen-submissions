@@ -36,6 +36,30 @@ _Exercises 2.18-2.20_
 Improving the app:
 - When there is a list of countries, display a button next to the name so the user can click to show the info of that country without keep typing.
 
+1. ✅ Refactor CountriesList so each country displays a button for rendering that country.
+2. ✅ Refactor filter, so it can handle:
+   1. Search empty '' 'please, some country's name. 
+   2. newSearch === country.name.common, renders only one & handles duplicated names like Guinea or Sudan
+   3. country.name.common.includes(newSearch), renders list of countries.
+```jsx
+// original filtering logic:
+const filteredCountries = countries.filter(c => 
+  c.name.common.toLowerCase().includes(newSearch))
+// new logic: Even if its an IIFE, it will run every time the component 
+// re-renders, ensuring only one type of return as the user types (or not).
+const filteredCountries = (() => {
+    // empty input
+    const search = newSearch.trim().toLowerCase();
+    if (search === "") return [];
+    // exact match
+    const exactMatch = countries.find(c => c.name.common.toLowerCase() === search);
+    if (exactMatch) return [exactMatch];
+    // multiple matches
+    return countries.filter(c => c.name.common.toLowerCase().includes(search));
+  })();  
+```
+3. ✅ Refactor components so App.jsx pass `setNewSearch` method as a prop through the tree.
+4. ✅ Attach a click handler: `onClick={ () => setNewSearch(country.name.common) }` to the button.
 
 
 ## Exercise 2.20 - Step 3
