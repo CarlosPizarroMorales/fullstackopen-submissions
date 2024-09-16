@@ -1,6 +1,9 @@
 # [Data for countries][00]
 _Exercises 2.18-2.20_
 
+## Usage
+After cloning the repository and installing the node_modules, you will need to provide your own [OpenWeatherMap](https://openweathermap.org) API key in [this file](./src/services/countries.js#L3) for the project to function properly.
+
 ## Exercise 2.18 - Step 1
 - Make an application that allow users to see information from countries.
 - The user interface consists on an input::text in what the user types country names or part of them.
@@ -69,16 +72,82 @@ const filteredCountries = (() => {
 **NB:** you may need to use Chrome if Firefox sends a request error.
 **NB:** don't save the api key in the project source. Use an environment variable. Some resources to read:
 - Enviroment variables [in Vite][10]
-- 
+
+### Enviroment
+* **Example API call**: https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key}
+* The _response_ object has a `current` object where it is contained all the necessary data.
+* `current.temperature` and `current.wind_speed` are the required fields.
+* `current.weather.icon` has a code like `04d` that must be put in this url: `https://openweathermap.org/img/wn/10d@2x.png` to get the corresponding icon. The `@2x` is optional and can be up to `@4x` for larger sizes.
+* **In countries api we find:** `country.capitalInfo.latlng = [-33.45, -70.67]`
+
+1. Decide the approach:
+   1. ✅ `Country.jsx::useEffect()`?
+   2. `App.jsx::useState(weather)` on filtering?
+2. ✅ Declare `[ weather, setWeather ] = useState({})`
+3. ✅ Implement a new function in `src/services/countries.js::getWeather()`
+4. ✅ Implement `Country.jsx::useEffect(getWeather())`
+6. ✅ Prepare the environment: 
+   1. set the prefixer, add it to gitignore
+   2. set a new package.json::script `prefixenv`
+   3. run before run project
+7. **NOTE:** I don't know why but running the script from the npm run `script` doesn't work. I had to manually run the script before `npm run dev`
+8. **UPDATE:** This is due to npm scripts running each one in its own shell. To fix the issue run `npm run dev` inside the script to ensure it can get the apikey value.
+9. ✅ Correct the api call: add `unit=metric` parameter to get Celsius temperature instead Kelvin.
+10. ✅ Set a conditional rendering on Country.jsx so the first run doesn't render empty weather data. For this, set `weather` initial state to `null`.
+11. ✅ Extra refactor: make a `Weather.jsx` component to declutter the `Country` component
 
 
 
+## Response sample:
+```json
+// https://api.openweathermap.org/data/2.5/weather?q=Santiago,cl&APPID=ka'chín!
 
-
-
-
-
-
+{
+  "coord": {
+    "lon": -70.6483,
+    "lat": -33.4569
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 283.39,
+    "feels_like": 282.04,
+    "temp_min": 281.63,
+    "temp_max": 284.51,
+    "pressure": 1021,
+    "humidity": 60,
+    "sea_level": 1021,
+    "grnd_level": 934
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 5.66,
+    "deg": 170
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1726196898,
+  "sys": {
+    "type": 2,
+    "id": 2095708,
+    "country": "CL",
+    "sunrise": 1726224234,
+    "sunset": 1726266784
+  },
+  "timezone": -10800,
+  "id": 3871336,
+  "name": "Santiago",
+  "cod": 200
+}
+```
 
 ---
 [00]:https://fullstackopen.com/en/part2/adding_styles_to_react_app#exercises-2-18-2-20

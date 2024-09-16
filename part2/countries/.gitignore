@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# PowerShell script for environment variables
+prefix-env.ps1

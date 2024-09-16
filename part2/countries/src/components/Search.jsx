@@ -1,8 +1,9 @@
 const Search = ({ newSearch, handleNewSearch }) => 
   (
-    <label htmlFor="search" className="search">Find countries: 
+    <div className="search">
+      <label htmlFor="search">Find countries</label>
       <input type="search" value={ newSearch } onChange={ handleNewSearch } id="search"/>
-    </label>
+    </div>
   )
 
 export default Search;
